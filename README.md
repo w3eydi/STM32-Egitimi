@@ -1,7 +1,25 @@
 # STM32-Egitimi
-STM32 HAL kütüphane örneklerinin github markdown yöntemiyle dokümantasyon olarak anlatımı.
----
+
+##### STM32 HAL kütüphane örneklerinin git markdown yöntemiyle dokümantasyon olarak anlatımıştır.
+
+---------------
+
+### Başlarken
+
 STM32 HAL dokümantasyonu elektronik ve Arm programlama konusunda az çok bilgi sahibi, en azından led yakıp, söndürmüş veya bu konuyla haşır neşir olan kişilere daha çok hitap etmektedir. Her ne kadar anlatımımızı elimizden geldiğince sade bir şekilde anlatmaya çalışacak olsak da hiç bir bilgisi olmayan kişiler başlangıç aşamasında zorlanabilirler. Bu yüzden internette bolca bulunan ve devamı gelmeyen Türkçe kaynaklardan başlangıç aşamasını atlatabilirsiniz. Asıl amaç; az kullandığımız için unutulan bazı STM32 HAL yöntemlerini dokümante etmek, hızlı bir şekilde kullanılabilmesini sağlamak ve her ne kadar ingilizceden çeviri yapabileceğimiz bir çok araç olsa da çalışmamak için öne sürülen 'Türkçe kaynak yok!', 'İngilizcem iyi değil!' şeklindeki söylemlerin(!) azalmasına bir nebze katkı da bulunmaktır. Sizden en başta sabırlı olmanızı istiyorum. Azimli ve sabırlı bir şekilde gayret gösterirseniz, üstesinden gelebileceğinizi düşünmekteyim. Başarılar dilerim.
+
+---
+
+### Gereksinimler
+
+- C Programlama Bilgisi
+- Temel Elektronik
+- STM32CubeIDE ( CubeIDE içerisinde CubeMX mevcut, ekstra kurmanıza gerek yok. Keil, IAR, Atollic veya System Workbench for STM32 ile kullanmak istiyorsanız yanında STM32CubeMX kurmanız gerekmektedir. )
+- STM32 F Serisi Geliştirme Kartı ( STM32F0-(F1, F3, F4, L4, F7, H7) kartlarından elinizde mevcut olan veya ihtiyacınıza göre almak istediğiniz herhangi bir kartı kullanabilirsiniz. )
+
+Benim elimde **STM32F446-RE NUCLEO** geliştirme kartı bulunmaktadır ve uygulamalarımda bu kartı kullanacağım.
+
+---
 
 **MIT Lisansı**
 
