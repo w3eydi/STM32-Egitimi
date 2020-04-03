@@ -1,9 +1,9 @@
 # STM32-Egitimi
-STM32 HAL kütüphane örneklerinin github markdown sayfasıyla anlatımı.
-
+STM32 HAL kütüphane örneklerinin github markdown yöntemiyle dokümantasyon olarak anlatımı.
 ---
+STM32 HAL dokümantasyonu elektronik ve Arm programlama konusunda az çok bilgi sahibi, en azından led yakıp, söndürmüş veya bu konuyla haşır neşir olan kişilere daha çok hitap etmektedir. Her ne kadar anlatımımızı elimizden geldiğince sade bir şekilde anlatmaya çalışacak olsak da hiç bir bilgisi olmayan kişiler başlangıç aşamasında zorlanabilirler. Bu yüzden internette bolca bulunan ve devamı gelmeyen Türkçe kaynaklardan başlangıç aşamasını atlatabilirsiniz. Asıl amaç; az kullandığımız için unutulan bazı STM32 HAL yöntemlerini dokümante etmek, hızlı bir şekilde kullanılabilmesini sağlamak ve her ne kadar ingilizceden çeviri yapabileceğimiz bir çok araç olsa da çalışmamak için öne sürülen 'Türkçe kaynak yok!', 'İngilizcem iyi değil!' şeklindeki söylemlerin(!) azalmasına bir nebze katkı da bulunmaktır. Sizden en başta sabırlı olmanızı istiyorum. Azimli ve sabırlı bir şekilde gayret gösterirseniz, üstesinden gelebileceğinizi düşünmekteyim. Başarılar dilerim.
 
-#MIT Lisansı
+**MIT Lisansı**
 
 Telif Hakkı (Copyright) (c) 2020 Eydi Gözeneli - github.com/w3eydi
 
