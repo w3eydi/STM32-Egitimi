@@ -28,28 +28,31 @@ Diğer ide'lerde (geliştirme ortamı) STM32 HAL kütüphanesinden yararlanmak i
 > CubeMX ile ilgili asıl göz atmamız gereken User Manuel dosyasıdır. İçerisinde tüm bölümleri en başından ide'niz için C kodu üretmeye kadar detaylı bir şekilde anlatmaktadır.
 STM32CubeMX for STM32 configuration and initialization C code generation (User Manuel) - [UM1718](https://www.st.com/content/ccc/resource/technical/document/user_manual/10/c5/1a/43/3a/70/43/7d/DM00104712.pdf/files/DM00104712.pdf/jcr:content/translations/en.DM00104712.pdf)
 
-##### ST-LINK/V2
+#### ST-LINK/V2
 Aslında aşağıdaki idelerle birlikte içerisinde yüklendiğini hatırlıyorum ama tam emin değilim. STM32CubeMX 'le birlikte yükleniyorda olabilir. Neyse, ST-LINK/V2 normalde ayrı bir aparat olarak satılan bir programlayıcıdır. Yani; bizim sahip olduğumuz mikrodenetleyiciyi programlamaya yarar. Fakat **NUCLEO veya DISCOVERY** kullanıyorsanız ayrıca bu aparatı satın almanıza gerek yoktur. Zaten kartla birlikte tümleşik olarak gelmektedir. Dik tuttuğumuzda üstteki alttakine göre ufak olan kısım bizim programlayıcımızdır. Bir kaç ayar yaparsanız başka kartları programlamak için bile kullanabilirsiniz. Genellikle M3 Cortex bir çekirdek mevcuttur. USB aracılığıyla aldığı verilerle alttaki asıl mikrodenetleyicimiz olan M4 çekirdeğine (kendi kartım için konuşuyorum - STM32F446-RE) programlanmasını sağlar. USB ile ST-LINK/V2 kullanmak için birde sürücüsüne ihtiyacımız vardır. STM32CubeIDE kullanıyorsanız Next -> Next kısmında ierlerken tikli olduğunu görmüş olmalısınız. Ama alttaki idelerde olmama ihtimaline karşı linki yazıyorum.
 - [ST-LINK/V2](https://www.st.com/en/development-tools/stsw-link009.html#get-software)
 - [STM32 ST-LINK Utility](https://www.st.com/en/development-tools/stsw-link004.html#get-software)
-> Utility ise memory takibi yapmamıza, doğruluyabilmemize, silmemize kısacası elimizdeki kartın içeriğine erişip, HEX dosyalarını görüntülemek için kolay ve verimli bir yardımcımızdır. Daha profesyonel kullanımlarda tercih edilse de bir bakmanızda fayda olacağını düşünüyorum. Bu programlarla ilgili bütün bağlantıların yer aldığı sayfayada [ST-LINK/V2 in-circuit debugger/programmer for STM8 and STM32](https://www.st.com/en/development-tools/st-link-v2.html#tools-software) adresinden ulaşabilirsiniz.
+> Utility ise memory takibi yapmamıza, doğruluyabilmemize, silmemize kısacası elimizdeki kartın içeriğine erişip, HEX dosyalarını görüntülemek için kolay ve verimli bir yardımcımızdır. Daha profesyonel kullanımlarda tercih edilse de bir bakmanızda fayda olacağını düşünüyorum. 
 
-##### Keil µVision
+
+Bu programlarla ilgili bütün bağlantıların yer aldığı sayfayada [ST-LINK/V2 in-circuit debugger/programmer for STM8 and STM32](https://www.st.com/en/development-tools/st-link-v2.html#tools-software) adresinden ulaşabilirsiniz.
+
+#### Keil µVision
 
 Arm firmasının resmi programlama ortamıdır. Ücretsiz sürüm de 32kB kod limiti vardır.
 - [Keil µVision İndirme Linki](https://www.keil.com/download/product/)
 
-##### IAR Embedded Workbench for Arm
+#### IAR Embedded Workbench for Arm
 
 IAR firmasının Arm işlemciler için programlama ortamıdır. Özellikle mikrodenetleyici kullanmadan 'Simülasyon' özelliğiyle kullanabilirsiniz. Ücretsiz sürüm de 32kB kod limiti vardır.
 - [IAR Embedded Workbench for Arm](https://www.iar.com/iar-embedded-workbench/#!?currentTab=free-trials)
 
-##### Atollic TrueSTUDIO
+#### Atollic TrueSTUDIO
 
 ST firması Atollic TrueSTUDIO firmasını satın aldı ve üzerine kendi STM32CubeIDE yazılımını geliştirdi. Bende artık bu ide'yi kullanmanızı tavsiye etmiyorum. Aslında gereksiz bir genel kültür oldu. Zaten sitenin anasayfasında uyarı olarak yeni versiyonları çıkmayacağı ve STM32CubeIDE kullanılması tavsiye edilmektedir. STMCubeIDE 'nin 1.3.0 'dan önceki versiyonlarında bende bir kaç kez kullanmıştım. Fakat yeni versiyonla bir çok yeni özellik geliştirildiği için artık Atollic programına gerek kalmadı. Youtube, Udemy gibi bazı video ortamlarında dersler Atollic programıyla çekildiği için denemek isteyenler olursa diye ilgili bağlantıyı aşağıya bırakıyorum. 
 - [Atollic TrueStudio](https://atollic.com/resources/download/)
 
-##### System Workbench for STM32
+#### System Workbench for STM32
 
 Açık kaynak mimarisini kullanarak oluşturulan bir topluluk ide'sidir.
 - [SW4STM32](https://www.openstm32.org/HomePage)
@@ -62,7 +65,11 @@ Açık kaynak mimarisini kullanarak oluşturulan bir topluluk ide'sidir.
 
 https://www.st.com/en/microcontrollers-microprocessors/stm32f446re.html - Benim kartımız adresi burada yer almaktadır ve kartımla ilgili tüm bilgilere **KEY FEATURES** içeriğinden ulaşabiliyorum. Üstte bahsettiğim URL'ye girdiğinizde kırmızı çerçeveli [Download datasheet](https://www.st.com/resource/en/datasheet/stm32f446re.pdf) kısmına baktığımızda genel pin yapısı, regülatör bağlantıları, block diyagramı gibi bilgilere erişebiliyoruz. Burada bizim için block diyagramın ekran görüntüsünü çekip, saklamamız faydalı olacaktır. Bazı konularda kullanacağımız özelliğin hangi veriyoluna bağlı olduğunu bilmemiz gerekebiliyor.
 
-**[ EKRAN GORUNTUSU GELECEK ]**
+![Arama Motoru Sonuç Ekranı](https://github.com/w3eydi/STM32-Egitimi/blob/master/STM32%20Eğitimi%20000%20-%20Başlangıç/images/search-engine.png)
+
+Ayrıca; Arm'a ben mbed platformunda başlamıştım ve armın mbed sitesinde pin konfigürasyonları çok güzel görseller halinde gösterilmektedir. [stm32f446re mbed](https://www.google.com.tr/search?client=opera&q=stm32f446re+mbed&sourceid=opera&ie=UTF-8&oe=UTF-8) diye arattığımızda [os.mbed.com](https://os.mbed.com/platforms/ST-Nucleo-F446RE/) sitesinde kendi kartımızla ilgili bölüme girdiğimizde pin konfigürasyonlarını görmekteyiz. Oldukça güzel renklendirildiği için elimizin altında durmasında fayda vardır. Mesela; benim kartımın led pini **PA_5**(L1) olduğunu veya mavi olan 'User Button' düğmesinin **PC_13**(USER_BUTTON) 'de gösterildiğini Datasheet'e bakmadan da bulabiliyorum.
+
+![Mbed Platformu Pin Görüntüsü](https://github.com/w3eydi/STM32-Egitimi/blob/master/STM32%20Eğitimi%20000%20-%20Başlangıç/images/mbed-pin-goruntusu.png)
 
 [Tools & Software](https://www.st.com/en/microcontrollers-microprocessors/stm32f446re.html#tools-software) dediğimizde daha önce verdiğimiz programların da dahil olduğu kartımızla birlikte kullanabileceğimiz kocaman bir program listesi çıkıyor.
 
@@ -70,7 +77,7 @@ https://www.st.com/en/microcontrollers-microprocessors/stm32f446re.html - Benim 
 - [RM0390 - Reference manual](https://www.st.com/resource/en/reference_manual/dm00135183-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf) Aslında en çok uğrayacağımız bölümdür. Mikrodenetleyicinize ait her yapının registers(yazmaçları) ve bitleri yer almaktadır. En önemlisi de bunların nasıl programlanması gerektiği anlatılmaktadır.
 - [PM0214 - Programming manual](https://www.st.com/resource/en/programming_manual/dm00046982-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf) Bu kaynakla birlikte aslında mikrodenetleyici programlamak için temel dokümanlara sahip oluyoruz.
 
-##### STM32 HAL(Hardware Abstraction Layer) Libraries
+#### STM32 HAL(Hardware Abstraction Layer) Libraries
 
 Bizim yazılımlarımızda kullanacağımız donanım soyutlama katmanlarına da aşağıdaki bağlantılardan erişebiliriz. Hangi işlemci çekirdeğini kullanıyorsanız onunla ilgili kütüphaneye bakabilirsiniz. Benim işlemci çekirdeğim Cortex - M4 olduğu için **STM32F4 HAL and low-layer drivers** kısmına bakacağım.
 
@@ -88,6 +95,38 @@ Kendi işlemcinizi göremiyor veya bağlantı adresleri bozulmuş olma ihtimalin
 ---
 
 ## Temel HAL Projesi Oluşturma
+
+CubeIDE'yi ilk çalıştırdığımızda alttaki gibi bir ekranla karşılaşağız. Çalışma alanımızı seçmemizi istiyor. Dileğiniz yeri CubeIDE için belirtebilirsiniz. Ben belgeler klasörü altında çalışacağım. Devamında "Information Center" bizi karşıladı. Kapatabilirsiniz, şimdi ise genel bir STM32CubeIDE görünüşü karşımıza çıkıyor. Tabi; hiç projemiz olmadığı için sol taraftaki "Project Explorer" kısmı boş bir şekilde duruyor.
+
+![Çalışma Alanı Seçim Ekranı](https://github.com/w3eydi/STM32-Egitimi/blob/master/STM32%20Eğitimi%20000%20-%20Başlangıç/images/workspace.png)
+
+### Temel .ioc Dosyası Oluşturma
+
+STM32CubeMX .ioc uzantılı dosyalar oluşturur. Kendisi bu dosya ile HAL kütüphanelerini C kodu olarak üretmektedir. 
+> **File --> New --> STM32 Project** yolunu izleyerek ilk dosyamızı oluşturabiliriz. Eğer; CubeMX kullanıyor ve CubeIDE için kod derlemişseniz, 'Stm32 Project from STM32CubeMX .ioc File' seçeneğiyle ayrıca kurduğunuz CubeMX den kodlarınızı yükleyebilirsiniz. Ama CubeIDE içerisinde CubeMX gömülü olarak geldiği için CubeMX kurmamıza veya ondan dosya üretmemize gerek kalmıyor. O nedenle '**STM32 Project**' seçeneğinden devam ediyoruz.
+
+![Board Seçimi](images/board-selector.png)
+
+**Board Selector** kısmını seçip, kendi geliştirme kartımızı bulduktan sonra "Next" ile devam ediyoruz.
+
+![Proje Adı Yazılan Yer](https://github.com/w3eydi/STM32-Egitimi/blob/master/STM32%20Eğitimi%20000%20-%20Başlangıç/images/project-name.png)
+
+En son olası hatalara karşı Türkçe karakter kullanmadan proje ismini de yazıp, **Finish** butonuna tıkladıktan sonra ilk kez STM32CubeIDE 'yi kullandığımız için bir firmware paketi güncellemesi alacaksınız. Zaten arkada CubeMX ekranı da belirmiştir. Her ne kadar pinler default olmasın dediysek de muhtemelen kendisi pin konfigürasyonunu kendi yapabilir. **Pinout --> Clear Pinouts** yoluyla bütün pinleri sıfırlayabilirsiniz. Kendi pinlerimizi ilerleyen derslerde sıfırdan oluşturacağız. Şimdilik bu bölümle işimiz kalmadı.
+
+![Pinout Temizleme](https://github.com/w3eydi/STM32-Egitimi/blob/master/STM32%20Eğitimi%20000%20-%20Başlangıç/images/pinout-temizleme.png)
+
+**Clock Configuration** kısmını geldiğimiz de otomatik olarak HSI saati seçili, PLL ayarı yapılmış, 84 MHz saat hızı ayarlanmış şekilde duruyor. Sizdeki mikrodenetleyici de farklı olabilir. Burada 84 MHz yazan yeri kendi mikrodenetleyicim için en fazla 180 MHz olarak ayarlayabilirim. Daha fazlasında mikrodenetleyicim çabuk ısınacak ve yanacaktır.
+> HSI dahili iç osilatördür ve bizim mikrodenetleyicimizde 16 MHz 'dir.
+> HSE ise harici osilatör olup, dışarıdan saat darbesi göndermek için kullanılır. HSI'den farklı daha kararlı bir yapıdadır ve hassas hesaplamalarda doğruluğu daha güvenilir olduğu için tercih edilmektedir.
+> PLL HSI'den gelen 16 MHz veya HSE'den gelen 8 MHz'lik sinyali çoğaltarak daha yüksek seviyelerde kullanmamızı sağlar. **System Clock Mux --> PLLCLK** seçilmezse mikrodenetleyici frekansını HSI seçiliyse 16 MHz, HSE seçiliyse 8 MHz kullanmak durumunda kalırdır. PLL seçilmesinin mantığı frekansı çoğaltarak istediğimiz hızlara çıkmaktır. Resimde hazır olarak gelen PLL ayarlarıyla 84 MHz'lik bir hıza ulaşılmıştır. Maksimum kendi mikrodenetleyim için 180 MHz seçebilirdim.
+
+![Saat Konfigürasyonu](https://github.com/w3eydi/STM32-Egitimi/blob/master/STM32%20Eğitimi%20000%20-%20Başlangıç/images/saat-konfigurasyonu.png)
+
+**Ctrl + S** veya üstteki ToolBar menüsünden dişli çark simgesine basarak kodumuzu üretiyoruz.(Generate Code) Gerekli C kodunu ürettikten sonra .ioc dosyasını kapatabiliriz. Alttaki resimde asıl kodlarımızı yazacağımız **main.c** dosyasının konumu gösterilmiştir. 
+
+![main.c](https://github.com/w3eydi/STM32-Egitimi/blob/master/STM32%20Eğitimi%20000%20-%20Başlangıç/images/src-mainc.png)
+
+Evet, bir sonraki dersimizde bu seferde HSE osilatör kullanacağız, GPIO ayarlarını yapılandıracağız. **main.c** dosyası üzerinden GPIO kullanımına giriş yapacağız. Böylelikle klasik ilk ders olan **LED BLINK**(led yakıp, söndürme) uygulamasını yapmış olacağız.
 
 ---
 

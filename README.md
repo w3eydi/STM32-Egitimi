@@ -21,7 +21,7 @@ Benim elimde **STM32F446-RE NUCLEO** geliştirme kartı bulunmaktadır ve uygula
 
 İçerik:
 - IDE kurulum kılavuzları ve indirme linkleri.
-- İşlemci kullanım kılavuz bağlantıları. (Datasheets)
+- Mikrodenetleyici kullanım kılavuz bağlantıları. (Datasheets)
 - CubeMX ile temel kod yazım ortamı oluşturulması.
 
 ---
