@@ -24,6 +24,14 @@ Benim elimde **STM32F446-RE NUCLEO** geliştirme kartı bulunmaktadır ve uygula
 - Mikrodenetleyici kullanım kılavuz bağlantıları. (Datasheets)
 - CubeMX ile temel kod yazım ortamı oluşturulması.
 
+## STM32 Eğitimi - 001 GPIO Operasyonları
+
+İçerik:
+- GPIO CubeMX Ayarlarının yapılandırılması.
+>GPIO, HSE, PLL ayarlarıyla temel bir başlangıç projesi oluşturulması sağlanmaktadır.
+- GPIO Led Yakma
+- GPIO Interrupts(Kesmeler)
+
 ---
 
 **MIT Lisansı**
