@@ -49,7 +49,7 @@ Projemizi açarak, **Core --> Src --> main.c** yoluyla dosyamızı açıyoruz. S
 
 ![](images/user-code.png)
 
-Alternatif olarak **WritePin** yerine **TogglePin** ile de aynı işlemi yapabilirdik. TogglePin ise mevcut `Low(0)` veya `High(1)` durumunu tam tersi şekilde işleme koyar. Hatırlarsanız en başta CubeMX'de **PA5** pinimizi **LOW(0)** olarak ayarlamıştık.
+Alternatif olarak **WritePin** yerine **TogglePin** ile de aynı işlemi yapabilirdik. TogglePin ise mevcut **`Low(0) - RESET`** veya **`High(1) - SET`** durumunu tam tersi şekilde işleme koyar. Hatırlarsanız en başta CubeMX'de **PA5** pinimizin **GPIO output level** seçeneğini **LOW(0)** olarak ayarlamıştık.
 
 ```c
 
@@ -64,6 +64,11 @@ Alternatif olarak **WritePin** yerine **TogglePin** ile de aynı işlemi yapabil
 	/* USER CODE END 3 */
 
 ```
+
+Peki, bu kodları nereden bulabiliriz? İşte burada **Başlangıç** bölümünde verdiğimiz HAL kütüphane adreslerine bakmamız gerekiyor. F4 serisi için **UM1725** nolu dokümanda GPIO ile ilgili bolümlerden ulaşabiliriz.
+
+![](images/hal-gpio.png)
+![](images/hal-gpio2.png)
 
 ---
 
