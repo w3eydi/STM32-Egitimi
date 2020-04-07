@@ -44,10 +44,26 @@ Artık **Ctrl + S** veya üstteki Generate Code seçeneğiyle kodlarımızı der
 
 ## GPIO Led Yakma (Led Blink)
 
-Projemizi açarak, **Core --> Src --> main.c** yoluyla dosyamızı açıyoruz. Sürekli tekrar etmek istediğimiz için `while(1){` 'den hemen sonra yazıyoruz. Kısayolu `Ctrl + Shift + F` olan tuş kombinasyonu ile kodların satırlarını düzenli bir hale getirebiliriz.
+Projemizi açarak, **Core --> Src --> main.c** yoluyla dosyamızı açıyoruz. Sürekli tekrar etmek istediğimiz için `**while(1){**` 'den hemen sonra yazıyoruz. Kısayolu `Ctrl + Shift + F` olan tuş kombinasyonu ile kodların satırlarını düzenli bir hale getirebiliriz. `HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);` komutu **A portundaki,** 5 numaralı pini, **SET** eder.Yani; ledimizi yakar. `HAL_Delay(1000)` komutu ise **1000 ms** yani 1 saniye bekler. Tekrar WritePin ile `GPIO_PIN_RESET` ayarını değiştirerek ledimizi söndürüyoruz ve yine 1 sn bekliyoruz.
 > **UYARI :** Dikkat etmemiz gerek husus, ileride tekrar **CubeMX** kullanma ihtimalimize veya yeni özellikler eklememize karşın kodlarımızı **USER CODE BEGIN/END** yazan yerlerin arasına yazmamızdır. **CubeMX**'de tekrar **Generate Code** seçeneğini kullandığımızda bizim yazdığımız kodlara dokunmaz fakat belirtilen yerlere yazmak isek oradaki **TÜM KODLAR SİLİNİR.**
 
-![]()
+![](images/user-code.png)
+
+Alternatif olarak **WritePin** yerine **TogglePin** ile de aynı işlemi yapabilirdik. TogglePin ise mevcut `Low(0)` veya `High(1)` durumunu tam tersi şekilde işleme koyar. Hatırlarsanız en başta CubeMX'de **PA5** pinimizi **LOW(0)** olarak ayarlamıştık.
+
+```c
+
+	/* USER CODE BEGIN WHILE */
+	while (1) {
+		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+		HAL_Delay(1000);
+		/* USER CODE END WHILE */
+
+		/* USER CODE BEGIN 3 */
+	}
+	/* USER CODE END 3 */
+
+```
 
 ---
 
