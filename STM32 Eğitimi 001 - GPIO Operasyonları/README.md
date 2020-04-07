@@ -44,7 +44,10 @@ Artık **Ctrl + S** veya üstteki Generate Code seçeneğiyle kodlarımızı der
 
 ## GPIO Led Yakma (Led Blink)
 
-Programı kullandığım Mayıs 2020 tarihi itibariyle şu anda 1.3.0 Windows versiyonunu kullanmaktayım. 
+Projemizi açarak, **Core --> Src --> main.c** yoluyla dosyamızı açıyoruz. Sürekli tekrar etmek istediğimiz için `while(1){` 'den hemen sonra yazıyoruz. Kısayolu `Ctrl + Shift + F` olan tuş kombinasyonu ile kodların satırlarını düzenli bir hale getirebiliriz.
+> **UYARI :** Dikkat etmemiz gerek husus, ileride tekrar **CubeMX** kullanma ihtimalimize veya yeni özellikler eklememize karşın kodlarımızı **USER CODE BEGIN/END** yazan yerlerin arasına yazmamızdır. **CubeMX**'de tekrar **Generate Code** seçeneğini kullandığımızda bizim yazdığımız kodlara dokunmaz fakat belirtilen yerlere yazmak isek oradaki **TÜM KODLAR SİLİNİR.**
+
+![]()
 
 ---
 
