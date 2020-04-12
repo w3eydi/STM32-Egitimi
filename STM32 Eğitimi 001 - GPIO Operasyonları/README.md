@@ -70,6 +70,26 @@ Peki, bu kodları nereden bulabiliriz? İşte burada **Başlangıç** bölümün
 ![](images/hal-gpio.png)
 ![](images/hal-gpio2.png)
 
+Kodlarımızı **`Debug`** seçeğiyle yükleyebileceğimiz gibi hemen yanında bulunan CubeIDE 'nin 1.3.0 ile gelen **`Run`** özelliğiyle de Debug yapmadan hemen çalıştırabiliriz. Tabi; kodlarımızda bir aksaklık olmaması için **Build** yapmanızı öneririm.
+
+![](images/debug.png)
+
+**Debug** seçeğini seçtikten sonra ilk kez proje de çalıştırdığımızdan, ayar ekranıyla karşılaşacaksınız. Varsayılan ayarlar yeterli olup, **Ok** ile devam ediniz. CubeIDE 'de de ilk kez **Debug** modunu çalıştırdığımız için hangi ağ türünde kullanmak istiyorsanız, güvenlik duvarına izin vermelisiniz.
+
+![](images/debug-settings.png)
+
+Devamında bizi **Switch** ekranı karşılayacak. **`Switch`** seçeneğiyle Debug ekranına geçiş sağlamayı onaylıyoruz. İsterseniz **`Remember my decision`** kutucuğunu işaretliyerek bir daha bu ekranın çıkmamasını sağlayabilirsiniz.
+
+![](images/debug-switch.png)
+
+Son olarak **`Resume`** seçeneğiyle kodlarımızı mikrodenetleyicimize yükleyebiliriz. Ayrıca; bu ekran programcılıkta olduğu gibi Debug yapmamızı sağlar. **`Terminate`** ile de Debug işlemini sonlandırabilirsiniz.
+
+![](images/debug-resume.png)
+
+---
+
+## GPIO Kesme Kullanımı (Interrupts)
+
 ---
 
 **MIT Lisansı**
