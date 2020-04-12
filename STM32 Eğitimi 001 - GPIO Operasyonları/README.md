@@ -137,7 +137,66 @@ Ledimiz **PA5** pinindeydi ve başlangıç olarak sönme durumundaydı.. Amacım
 ![](images/kesme-kodu.png)
 
 Programımızı bu sefer de **`Run`** seçeneğiyle aktardığımızda User Button (Mavi Buton - STM32F446RE kartı için PC13) ile PA5 pininin her basışta yanıp sönme durumunun değiştiğini görebiliriz. Kodlar **src** klasörü içerisindedir fakat size daha iyi öğrenmeniz adına elinizle deneyerek yazmanızı tavsiye ediyorum.
-> **NOT :** Bazen butona basarken elektriksel olarak **buton arkı** oluşabilir. Bu süre gözle görülemeyecek kadar kısadır fakat işlemci bunu algılar. O nedenle bazı durumlarda size sanki yanıp sönmüyormuş gibi izlenim verebilir. Buton arkı konusuna internet üzerinden bakabilirsiniz.
+> **NOT :** Bazen butona basarken elektriksel olarak **buton arkı** oluşabilir. Bu süre gözle görülemeyecek kadar kısadır fakat işlemci bunu algılar. O nedenle bazı durumlarda size sanki yanıp sönmüyormuş gibi izlenim verebilir. Kısaca buton arkını kaldırabileceğiniz bir örnek kod uygulaması yapacağım. Buton arkı konusuyla alakalı detaylı bilgilere internet üzerinden bakabilirsiniz.
+
+---
+
+## GPIO Buton Arkı
+
+Başka buton bağlamadan hızlı bir şekilde işlem yapmak için mevcut **GPIO_EXTI13** seçeneğini Pin ayarları ekranından kaldırın. Yerine **GPIO_Input** özelliğiyle bir giriş uygulaması yapacağız. Pull-up seçeneğini seçin. İstediğiniz bir kaç pini led yakmak için GPIO_Output yaparak led bağlayabilirsiniz. Daha sonra kodumuzu üretelim ve **main.c** dosyasına gelelim.
+
+![](images/buton-ark.png)
+
+```c
+
+/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
+	while (1) {
+
+		if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET) {
+			count++;
+			HAL_Delay(10);
+		}
+			if (count == 1) {
+				HAL_GPIO_WritePin(GPIOB, Led1_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOB, Led2_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOA, Led3_Pin, GPIO_PIN_RESET);
+			} else if (count == 2) {
+				HAL_GPIO_WritePin(GPIOB, Led1_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOB, Led2_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOA, Led3_Pin, GPIO_PIN_RESET);
+			} else if (count == 3) {
+				HAL_GPIO_WritePin(GPIOB, Led1_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOB, Led2_Pin, GPIO_PIN_SET);
+				HAL_GPIO_WritePin(GPIOA, Led3_Pin, GPIO_PIN_SET);
+			} else if (count == 4) {
+				HAL_GPIO_TogglePin(GPIOB, Led1_Pin);
+				HAL_GPIO_TogglePin(GPIOB, Led2_Pin);
+				HAL_GPIO_TogglePin(GPIOA, Led3_Pin);
+				HAL_Delay(1000); // İstediğiniz değeri ayarlayabilirsiniz. 1 sn = 1000 ms(milisaniye)
+			} else if (count == 0) {
+				HAL_GPIO_WritePin(GPIOB, Led1_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOB, Led2_Pin, GPIO_PIN_RESET);
+				HAL_GPIO_WritePin(GPIOA, Led3_Pin, GPIO_PIN_RESET);
+			}
+			/* USER CODE END WHILE */
+
+			/* USER CODE BEGIN 3 */
+			while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == RESET) {
+				if (count == 4) count = 0;
+			}
+			HAL_Delay(10);
+	}
+	/* USER CODE END 3 */
+	
+```
+
+> Yukarıdaki kodda belki de kafanızı karıştıran kısım `/* USER CODE BEGIN 3 */` ile başlayan **`while`** döngüsü. Burada arktan dolayı programın ilerleyişi bozulmasın diye ilk `RESET`sinyali yakalandıktan sonra döngüye sokuluyor. `RESET` sinyali `SET` olunca döngüden çıkıyor ve sıradaki işlemi gerçekleştiriyor.
+
+
+>**NOT :** Led1_Pin yazıları sizi yanıltmasın. **CubeMX** içerisinde istediğiniz pine mouse sağ tıklayıp, **User Label** seçildiğinde kendinizde adlandırabiliyorsunuz. Alttaki resimde görüldüğü gibi **`PB6`** pini **`Led1`** olarak adlandırdım.
+![](images/user-label.png)
+
 
 ---
 
