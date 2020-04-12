@@ -90,8 +90,9 @@ Son olarak **`Resume`** seçeneğiyle kodlarımızı mikrodenetleyicimize yükle
 
 ## GPIO Kesme Kullanımı (Interrupts)
 
-Çok yoğun bir şekilde çalışıyorsunuz. Aniden iş ile ilgili bakmak zorunda olduğunuz bir telefon geldi. Mecburen işinizi bırakıp, telefonu yanıtlıyorsunuz. Görüşmeniz bitince tekrar işinize kaldığınız yerden devam ediyorsunuz. İşte kesmelerin çalışma mantığı bu şekildedir. Normalde kodlarımız `while(1)` döngüsü içerisinde çalışırken, kesme geldiğinde durdurulur ve kesme işlemi yapılır. Daha sonra kesme işlemi bittiğinde hangi kodda kaldıysa oradan devam eder.
+Çok yoğun bir şekilde çalışıyorsunuz. Aniden iş ile ilgili bakmak zorunda olduğunuz bir telefon geldi. Mecburen işinizi bırakıp, telefonu yanıtlıyorsunuz. Görüşmeniz bitince tekrar işinize kaldığınız yerden devam ediyorsunuz. İşte kesmelerin çalışma mantığı bu şekildedir. Normalde kodlarımız **`while(1)`** döngüsü içerisinde çalışırken, kesme geldiğinde durdurulur ve kesme işlemi yapılır. Daha sonra kesme işlemi bittiğinde hangi kodda kaldıysa oradan devam eder.
 
+![](images/kesme-diyagram.png)
 
 İşte size CubeIDE'yi ısrarla tavsiye etmemin en öncelikli amacı buydu. **CubeMX** programı dahili olarak içinde olduğundan **`.ioc`** uzantılı dosyayı açarak, program içerisinde değişiklikleri başka programa geçmeden yapabiliriz.
 
@@ -109,7 +110,7 @@ Varsayılan olarak **Rising** ayarı gelmektedir. (Bu konu hakkında pek bilgini
 
 ![](images/kesme-enabled.png)
 
-**`Ctrl + S`** seçeneğiyle kaydedince otomatik olarak karşımıza kod üretilsin seçeneği çıkar. Evet diyerek yeni kodumuzu üretiyoruz. Alternatif olarak üstteki toolbarda yer alan **Code Generation** seçeneğiyle de yeni kodlarımı aktif hale getirebiliriz.
+**`Ctrl + S`** seçeneğiyle kaydedince otomatik olarak karşımıza kod üretilsin seçeneği çıkar. Evet diyerek yeni kodumuzu üretiyoruz. Alternatif olarak üstteki toolbarda yer alan **Code Generation** seçeneğiyle de yeni kodlarımızı aktif hale getirebiliriz.
 
 ![](images/code-generation.png)
 
@@ -127,15 +128,15 @@ Daha önce `while(1)` döngüsü içerisine yazdığımız kodlarımızı tamame
 
 ```
 
-Soldaki panelden ** Code --> Src --> `stm32f4xx_it.c` ** dosyasını açıyoruz. CubeIDE' de IntelliSense (Akıllı Kod Tamamlama) özelliği bulunduğu için **HAL_GPIO_** yazdıktan sonra **`Ctrl + Space`** tuşlarına basarak **Toggle_Pin** seçeneğini daha hızlı seçebiliriz.
+Soldaki panelden **Code --> Src --> `stm32f4xx_it.c`** dosyasını açıyoruz. CubeIDE' de IntelliSense (Akıllı Kod Tamamlama) özelliği bulunduğu için **HAL_GPIO_** yazdıktan sonra **`Ctrl + Space`** tuşlarına basarak **Toggle_Pin** seçeneğini daha hızlı seçebiliriz.
 
 ![](images/intellisense.png)
 
-Ledimiz **PA5** pinindeydi. 1 sn aralıklarla yanıp, sönüyordu. Amacımız kesme tetiklendiğinde bunu belli etmek için çok daha hızlı yanıp, sönmesini sağlamaktır. Bu nedenle **`EXTI15_10_IRQHandler(void)`** fonksiyonunun ilk **/* USER CODE BEGIN EXTI15_10_IRQn 0 */** kısmına kodumuz yazıyoruz.
+Ledimiz **PA5** pinindeydi ve başlangıç olarak sönme durumundaydı.. Amacımız kesme tetiklendiğinde bunu belli etmek için sönme durumundaysa yanmasını, yanma durumundaysa sönmesini sağlamak. Bu nedenle **`EXTI15_10_IRQHandler(void)`** fonksiyonunun ilk `/* USER CODE BEGIN EXTI15_10_IRQn 0 */` ile başlayan kısmına kodumuzu yazıyoruz.
 
 ![](images/kesme-kodu.png)
 
-Programımızı bu sefer de **`Run`** seçeneğiyle aktardığımızda User Button (Mavi Buton - STM32F446RE kartı için PC13) ile PA5 pininin her basışta yanıp sönme durumunun değiştiğini görebiliriz.
+Programımızı bu sefer de **`Run`** seçeneğiyle aktardığımızda User Button (Mavi Buton - STM32F446RE kartı için PC13) ile PA5 pininin her basışta yanıp sönme durumunun değiştiğini görebiliriz. Kodlar **src** klasörü içerisindedir fakat size daha iyi öğrenmeniz adına elinizle deneyerek yazmanızı tavsiye ediyorum.
 > **NOT :** Bazen butona basarken elektriksel olarak **buton arkı** oluşabilir. Bu süre gözle görülemeyecek kadar kısadır fakat işlemci bunu algılar. O nedenle bazı durumlarda size sanki yanıp sönmüyormuş gibi izlenim verebilir. Buton arkı konusuna internet üzerinden bakabilirsiniz.
 
 ---
