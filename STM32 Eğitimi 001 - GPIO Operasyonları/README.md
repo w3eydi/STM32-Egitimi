@@ -128,7 +128,7 @@ Daha önce `while(1)` döngüsü içerisine yazdığımız kodlarımızı tamame
 
 ```
 
-Soldaki panelden **Code --> Src --> `stm32f4xx_it.c`** dosyasını açıyoruz. CubeIDE' de IntelliSense (Akıllı Kod Tamamlama) özelliği bulunduğu için **HAL_GPIO_** yazdıktan sonra **`Ctrl + Space`** tuşlarına basarak **Toggle_Pin** seçeneğini daha hızlı seçebiliriz.
+Soldaki panelden **Code --> Src --> `stm32f4xx_it.c`** dosyasını açıyoruz. CubeIDE' de IntelliSense (Akıllı Kod Tamamlama) özelliği bulunduğu için **HAL_GPIO_** yazdıktan sonra <kbd>Ctrl</kbd> + <kbd>Space</kbd> tuşlarına basarak **Toggle_Pin** seçeneğini daha hızlı seçebiliriz.
 
 ![](images/intellisense.png)
 
