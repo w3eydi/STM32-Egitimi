@@ -137,11 +137,11 @@ Ledimiz **PA5** pinindeydi ve başlangıç olarak sönme durumundaydı.. Amacım
 ![](images/kesme-kodu.png)
 
 Programımızı bu sefer de **`Run`** seçeneğiyle aktardığımızda User Button (Mavi Buton - STM32F446RE kartı için PC13) ile PA5 pininin her basışta yanıp sönme durumunun değiştiğini görebiliriz. Kodlar **src** klasörü içerisindedir fakat size daha iyi öğrenmeniz adına elinizle deneyerek yazmanızı tavsiye ediyorum.
-> **NOT :** Bazen butona basarken elektriksel olarak **buton arkı** oluşabilir. Bu süre gözle görülemeyecek kadar kısadır fakat işlemci bunu algılar. O nedenle bazı durumlarda size sanki yanıp sönmüyormuş gibi izlenim verebilir. Kısaca buton arkını kaldırabileceğiniz bir örnek kod uygulaması yapacağım. Buton arkı konusuyla alakalı detaylı bilgilere internet üzerinden bakabilirsiniz.
+> **NOT :** Bazen butona basarken elektriksel olarak **buton arkı** oluşabilir. Bu süre gözle görülemeyecek kadar kısadır fakat işlemci bunu algılar. O nedenle bazı durumlarda size sanki yanıp sönmüyormuş gibi izlenim verebilir. Kısaca buton arkını yazılımla bastırabileceğiniz bir örnek kod uygulaması yapacağım. Buton arkı konusuyla alakalı detaylı bilgilere internet üzerinden bakabilirsiniz.
 
 ---
 
-## GPIO Buton Arkı
+## GPIO Buton Arkı Örnek Kod
 
 Başka buton bağlamadan hızlı bir şekilde işlem yapmak için mevcut **GPIO_EXTI13** seçeneğini Pin ayarları ekranından kaldırın. Yerine **GPIO_Input** özelliğiyle bir giriş uygulaması yapacağız. Pull-up seçeneğini seçin. İstediğiniz bir kaç pini led yakmak için GPIO_Output yaparak led bağlayabilirsiniz. Daha sonra kodumuzu üretelim ve **main.c** dosyasına gelelim.
 
@@ -194,7 +194,7 @@ Başka buton bağlamadan hızlı bir şekilde işlem yapmak için mevcut **GPIO_
 > Yukarıdaki kodda belki de kafanızı karıştıran kısım `/* USER CODE BEGIN 3 */` ile başlayan **`while`** döngüsü. Burada arktan dolayı programın ilerleyişi bozulmasın diye ilk `RESET`sinyali yakalandıktan sonra döngüye sokuluyor. `RESET` sinyali `SET` olunca döngüden çıkıyor ve sıradaki işlemi gerçekleştiriyor.
 
 
->**NOT :** Led1_Pin yazıları sizi yanıltmasın. **CubeMX** içerisinde istediğiniz pine mouse sağ tıklayıp, **User Label** seçildiğinde kendinizde adlandırabiliyorsunuz. Alttaki resimde görüldüğü gibi **`PB6`** pini **`Led1`** olarak adlandırdım.
+>**NOT :** Led1_Pin yazıları sizi yanıltmasın. **CubeMX** içerisinde istediğiniz pine mouse sağ tıklayıp, **User Label** seçildiğinde kendinizde adlandırabiliyorsunuz. Alttaki resimde görüldüğü gibi **`PB6`** pinini **`Led1`** olarak adlandırdım.
 ![](images/user-label.png)
 
 
