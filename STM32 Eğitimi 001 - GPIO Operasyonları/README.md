@@ -74,7 +74,7 @@ Kodlarımızı **`Debug`** seçeğiyle yükleyebileceğimiz gibi hemen yanında 
 
 ![](images/debug.png)
 
-**Debug** seçeğini seçtikten sonra ilk kez proje de çalıştırdığımızdan, ayar ekranıyla karşılaşacaksınız. Varsayılan ayarlar yeterli olup, **Ok** ile devam ediniz. CubeIDE 'de de ilk kez **Debug** modunu çalıştırdığımız için hangi ağ türünde kullanmak istiyorsanız, güvenlik duvarına izin vermelisiniz.
+**Debug** seçeğini seçtikten sonra ilk kez proje de çalıştırdığımızdan, ayar ekranıyla karşılaşacaksınız. Varsayılan ayarlar yeterli olup, **OK** ile devam ediniz. CubeIDE 'de de ilk kez **Debug** modunu çalıştırdığımız için hangi ağ türünde kullanmak istiyorsanız, **`Güvenlik Duvarı`**'na izin vermelisiniz.
 
 ![](images/debug-settings.png)
 
@@ -82,13 +82,61 @@ Devamında bizi **Switch** ekranı karşılayacak. **`Switch`** seçeneğiyle De
 
 ![](images/debug-switch.png)
 
-Son olarak **`Resume`** seçeneğiyle kodlarımızı mikrodenetleyicimize yükleyebiliriz. Ayrıca; bu ekran programcılıkta olduğu gibi Debug yapmamızı sağlar. **`Terminate`** ile de Debug işlemini sonlandırabilirsiniz.
+Son olarak **`Resume`** seçeneğiyle kodlarımızı mikrodenetleyicimize yükleyebiliriz. Ayrıca; bu ekran programlamada olduğu gibi Debug yapmamızı sağlar. **`Terminate`** ile de Debug işlemini sonlandırabilirsiniz.
 
 ![](images/debug-resume.png)
 
 ---
 
 ## GPIO Kesme Kullanımı (Interrupts)
+
+Çok yoğun bir şekilde çalışıyorsunuz. Aniden iş ile ilgili bakmak zorunda olduğunuz bir telefon geldi. Mecburen işinizi bırakıp, telefonu yanıtlıyorsunuz. Görüşmeniz bitince tekrar işinize kaldığınız yerden devam ediyorsunuz. İşte kesmelerin çalışma mantığı bu şekildedir. Normalde kodlarımız `while(1)` döngüsü içerisinde çalışırken, kesme geldiğinde durdurulur ve kesme işlemi yapılır. Daha sonra kesme işlemi bittiğinde hangi kodda kaldıysa oradan devam eder.
+
+
+İşte size CubeIDE'yi ısrarla tavsiye etmemin en öncelikli amacı buydu. **CubeMX** programı dahili olarak içinde olduğundan **`.ioc`** uzantılı dosyayı açarak, program içerisinde değişiklikleri başka programa geçmeden yapabiliriz.
+
+![](images/kesme-ioc.png)
+
+**PC13** pinine tıklayıp, **GPIO_EXTI13** seçeneğini aktif hale getiriyoruz. Bunu yaptığımızda solda gördüğünüz GPIO menüsüne **PC13** eklenecek ve **NVIC** ayarları menüsü de aktif hale gelecektir.
+
+![](images/kesme-exti13.png)
+
+Varsayılan olarak **Rising** ayarı gelmektedir. (Bu konu hakkında pek bilginiz yoksa, internetten ufak bir araştırma yapmanızı öneririm.)
+
+![](images/kesme-rising.png)
+
+**GPIO --> NVIC** sekmesine geldiğimizde kesmemizi **Enabled** seçeneğiyle aktif hale getirmemiz gerekiyor. Yoksa kesme ayarlarımız aktif olmaz. **Priority** seçenekleri aynı anda birden çok kesmenin çağrılması durumunda hangisinin daha öncelilikli olarak çalışmasını ayarlamak içindir.
+
+![](images/kesme-enabled.png)
+
+**`Ctrl + S`** seçeneğiyle kaydedince otomatik olarak karşımıza kod üretilsin seçeneği çıkar. Evet diyerek yeni kodumuzu üretiyoruz. Alternatif olarak üstteki toolbarda yer alan **Code Generation** seçeneğiyle de yeni kodlarımı aktif hale getirebiliriz.
+
+![](images/code-generation.png)
+
+Daha önce `while(1)` döngüsü içerisine yazdığımız kodlarımızı tamamen temizliyoruz.
+
+```c
+
+/* USER CODE BEGIN WHILE */
+	while (1) {
+		/* USER CODE END WHILE */
+
+		/* USER CODE BEGIN 3 */
+	}
+	/* USER CODE END 3 */
+
+```
+
+Soldaki panelden ** Code --> Src --> `stm32f4xx_it.c` ** dosyasını açıyoruz. CubeIDE' de IntelliSense (Akıllı Kod Tamamlama) özelliği bulunduğu için **HAL_GPIO_** yazdıktan sonra **`Ctrl + Space`** tuşlarına basarak **Toggle_Pin** seçeneğini daha hızlı seçebiliriz.
+
+![](images/intellisense.png)
+
+Ledimiz **PA5** pinindeydi. 1 sn aralıklarla yanıp, sönüyordu. Amacımız kesme tetiklendiğinde bunu belli etmek için çok daha hızlı yanıp, sönmesini sağlamaktır. Bu nedenle **`EXTI15_10_IRQHandler(void)`** fonksiyonunun ilk **/* USER CODE BEGIN EXTI15_10_IRQn 0 */** kısmına kodumuz yazıyoruz.
+
+![](images/kesme-kodu.png)
+
+Programımızı bu sefer de **`Run`** seçeneğiyle aktardığımızda User Button (Mavi Buton - STM32F446RE kartı için PC13) ile PA5 pininin her basışta yanıp sönme durumunun değiştiğini görebiliriz.
+> **NOT :** Bazen butona basarken elektriksel olarak **buton arkı** oluşabilir. Bu süre gözle görülemeyecek kadar kısadır fakat işlemci bunu algılar. O nedenle bazı durumlarda size sanki yanıp sönmüyormuş gibi izlenim verebilir. Buton arkı konusuna internet üzerinden bakabilirsiniz.
 
 ---
 
