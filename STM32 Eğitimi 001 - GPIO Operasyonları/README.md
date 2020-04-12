@@ -106,7 +106,7 @@ Varsayılan olarak **Rising** ayarı gelmektedir. (Bu konu hakkında pek bilgini
 
 ![](images/kesme-rising.png)
 
-**GPIO --> NVIC** sekmesine geldiğimizde kesmemizi **Enabled** seçeneğiyle aktif hale getirmemiz gerekiyor. Yoksa kesme ayarlarımız aktif olmaz. **Priority** seçenekleri aynı anda birden çok kesmenin çağrılması durumunda hangisinin daha öncelilikli olarak çalışmasını ayarlamak içindir.
+**GPIO --> NVIC** sekmesine geldiğimizde kesmemizi **Enabled** seçeneğiyle aktif hale getirmemiz gerekiyor. Yoksa kesme ayarlarımız aktif olmaz. **Priority** seçenekleri aynı anda birden çok kesmenin çağrılması durumunda hangisinin daha öncelikli olarak çalışmasını ayarlamak içindir.
 
 ![](images/kesme-enabled.png)
 
